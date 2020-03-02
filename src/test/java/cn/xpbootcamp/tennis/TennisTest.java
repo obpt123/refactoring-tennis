@@ -24,7 +24,7 @@ public class TennisTest {
         this.expectedScore = expectedScore;
     }
 
-    @Parameters
+    @Parameters(name = "[{index}] {0}:{1} should be {2}.")
     public static Collection<Object[]> getAllScores() {
         return Arrays.asList(new Object[][]{
                 {0, 0, "Love-All"},
@@ -97,4 +97,9 @@ public class TennisTest {
         checkAllScores(game);
     }
 
+    @Test
+    public void checkAllScoresTennisGame4() {
+        TennisGame4 game = new TennisGame4("player1", "player2");
+        checkAllScores(game);
+    }
 }
