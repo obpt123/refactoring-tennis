@@ -27,13 +27,10 @@ public class TennisGame2 implements TennisGame {
         if (P1point == P2point && P1point >= 3) {
             return "Deuce";
         }
-
-        String score = "";
-        if (P1point == P2point && P1point < 4) {
-            if (P1point != 3)
-                score = LOWER_NAMES[P1point] + "-All";
+        if (P1point == P2point && P1point < 3) {
+            return LOWER_NAMES[P1point] + "-All";
         }
-        return score;
+        throw new RuntimeException("Never occured");
     }
 
     public void wonPoint(String player) {
@@ -41,7 +38,6 @@ public class TennisGame2 implements TennisGame {
             P1point++;
         else
             P2point++;
-
     }
 
     private String formatPlayer1(String fmt) {
