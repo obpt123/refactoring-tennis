@@ -20,8 +20,8 @@ public class TennisGame2 implements TennisGame {
         if (Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2) {
             return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
         }
-        if (P1point != P2point && Math.min(P1point,P2point) >= 3) {
-            return P1point > P2point ? formatPlayer1("Advantage %s"): formatPlayer2("Advantage %s");
+        if (P1point != P2point && Math.min(P1point, P2point) >= 3) {
+            return P1point > P2point ? formatPlayer1("Advantage %s") : formatPlayer2("Advantage %s");
         }
 
         String score = "";
@@ -43,26 +43,9 @@ public class TennisGame2 implements TennisGame {
             score = P1res + "-" + P2res;
         }
 
-        if (P1point > P2point && P1point < 4) {
-            if (P1point == 2 || P1point == 3)
-                P1res = LOWER_NAMES[P1point];
-
-            if (P2point == 1 || P2point == 2)
-                P2res = LOWER_NAMES[P2point];
-
-            score = P1res + "-" + P2res;
+        if (P1point != P2point && Math.max(P1point, P2point) < 4) {
+            score = LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
         }
-        if (P2point > P1point && P2point < 4) {
-            if (P2point == 2 || P2point == 3)
-                P2res = LOWER_NAMES[P2point];
-
-            if (P1point == 1 || P1point == 2)
-                P1res = LOWER_NAMES[P1point];
-
-            score = P1res + "-" + P2res;
-        }
-
-       
 
         return score;
     }
