@@ -16,21 +16,37 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore() {
         if (isWin()) {
-            return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
+            return buildWinText();
         }
         if (isAdvantage()) {
-            return P1point > P2point ? formatPlayer1("Advantage %s") : formatPlayer2("Advantage %s");
+            return buildAdvantageText();
         }
         if (isLowerCompare()) {
-            return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
+            return buildLowerCompareText();
         }
         if (isDeuce()) {
             return "Deuce";
         }
         if (isLowerEquals()) {
-            return LOWER_NAMES[P1point] + "-All";
+            return buildLowerEqualsText();
         }
         throw new RuntimeException("Never occured");
+    }
+
+    private String buildLowerEqualsText() {
+        return LOWER_NAMES[P1point] + "-All";
+    }
+
+    private String buildLowerCompareText() {
+        return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
+    }
+
+    private String buildAdvantageText() {
+        return P1point > P2point ? formatPlayer1("Advantage %s") : formatPlayer2("Advantage %s");
+    }
+
+    private String buildWinText() {
+        return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
     }
 
     private boolean isLowerEquals() {
