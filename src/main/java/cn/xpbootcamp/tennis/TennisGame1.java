@@ -3,8 +3,8 @@ package cn.xpbootcamp.tennis;
 public class TennisGame1 implements TennisGame {
     private static final String[] LOWER_NAMES = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
 
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private int player1Score = 0;
+    private int player2Score = 0;
     private String player1Name;
     private String player2Name;
 
@@ -15,15 +15,15 @@ public class TennisGame1 implements TennisGame {
 
     public void wonPoint(String playerName) {
         if (playerName == player1Name)
-            m_score1 += 1;
+            player1Score += 1;
         else
-            m_score2 += 1;
+            player2Score += 1;
     }
 
     public String getScore() {
-        if (m_score1 == m_score2) {
+        if (player1Score == player2Score) {
             return getEqualsScore();
-        } else if (m_score1 >= 4 || m_score2 >= 4) {
+        } else if (Math.max(player1Score, player2Score) >= 4) {
             return getHigherScore();
         } else {
             return getLowerScore();
@@ -31,17 +31,17 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getLowerScore() {
-        return LOWER_NAMES[m_score1] + "-" + LOWER_NAMES[m_score2];
+        return LOWER_NAMES[player1Score] + "-" + LOWER_NAMES[player2Score];
     }
 
     private String getHigherScore() {
-        String level = Math.abs(m_score1 - m_score2) == 1 ? "Advantage " : "Win for ";
-        String playerName = m_score1 > m_score2 ? player1Name : player2Name;
+        String level = Math.abs(player1Score - player2Score) == 1 ? "Advantage " : "Win for ";
+        String playerName = player1Score > player2Score ? player1Name : player2Name;
         return level + playerName;
     }
 
     private String getEqualsScore() {
-        return m_score1 > 2 ? "Deuce" : LOWER_NAMES[m_score1] + "-All";
+        return player1Score > 2 ? "Deuce" : LOWER_NAMES[player1Score] + "-All";
     }
 
 }
