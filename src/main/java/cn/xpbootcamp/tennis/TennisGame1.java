@@ -31,18 +31,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getLowerScore() {
-        String score = "";
-        int tempScore;
-        for (int i = 1; i < 3; i++) {
-            if (i == 1)
-                tempScore = m_score1;
-            else {
-                score += "-";
-                tempScore = m_score2;
-            }
-            score += LOWER_NAMES[tempScore];
-        }
-        return score;
+        return LOWER_NAMES[m_score1] + "-" + LOWER_NAMES[m_score2];
     }
 
     private String getHigherScore() {
@@ -54,5 +43,5 @@ public class TennisGame1 implements TennisGame {
     private String getEqualsScore() {
         return m_score1 > 2 ? "Deuce" : LOWER_NAMES[m_score1] + "-All";
     }
-    
+
 }
