@@ -33,11 +33,9 @@ public class TennisGame2 implements TennisGame {
         if (P1point == P2point && P1point >= 3)
             score = "Deuce";
 
-        if (P1point > 0 && P1point <= 3 && P2point == 0) {
-            score = LOWER_NAMES[P1point] + "-" + LOWER_NAMES[0];
-        }
-        if (P2point > 0 && P2point <= 3 && P1point == 0) {
-            score = LOWER_NAMES[0] + "-" + LOWER_NAMES[P2point];
+        if (P1point!=P2point && P1point * P2point == 0 && Math.max(P1point, P2point) <= 3) {
+            score = P1point == 0 ? LOWER_NAMES[0] + "-" + LOWER_NAMES[P2point]
+                    : LOWER_NAMES[P1point] + "-" + LOWER_NAMES[0];
         }
         return score;
     }
