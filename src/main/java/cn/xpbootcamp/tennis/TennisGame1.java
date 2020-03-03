@@ -46,26 +46,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getHigherScore() {
-        int minusResult = m_score1 - m_score2;
-        if (minusResult == 1)
-            return formatPlayer1("Advantage %s");
-        else if (minusResult == -1)
-            return formatPlayer2("Advantage %s");
-        else if (minusResult >= 2)
-            return formatPlayer1("Win for %s");
-        else
-            return formatPlayer2("Win for %s");
+        String level = Math.abs(m_score1 - m_score2) == 1 ? "Advantage " : "Win for ";
+        String playerName = m_score1 > m_score2 ? player1Name : player2Name;
+        return level + playerName;
     }
 
     private String getEqualsScore() {
-        switch (m_score1) {
-        case 0:
-        case 1:
-        case 2:
-            return LOWER_NAMES[m_score1] + "-All";
-        default:
-            return "Deuce";
-        }
+        return m_score1 > 2 ? "Deuce" : LOWER_NAMES[m_score1] + "-All";
     }
 
     private String formatPlayer1(String fmt) {
