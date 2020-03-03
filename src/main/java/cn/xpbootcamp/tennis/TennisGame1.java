@@ -20,18 +20,17 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
         if (m_score1 == m_score2) {
-            score = getEqualsScore();
+            return getEqualsScore();
         } else if (m_score1 >= 4 || m_score2 >= 4) {
-            score = getHigherScore();
+            return getHigherScore();
         } else {
-            score = getLowerScore(score);
+            return getLowerScore();
         }
-        return score;
     }
 
-    private String getLowerScore(String score) {
+    private String getLowerScore() {
+        String score ="";
         int tempScore;
         for (int i = 1; i < 3; i++) {
             if (i == 1)
@@ -59,37 +58,28 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getHigherScore() {
-        String score;
         int minusResult = m_score1 - m_score2;
         if (minusResult == 1)
-            score = formatPlayer1("Advantage %s");
+            return formatPlayer1("Advantage %s");
         else if (minusResult == -1)
-            score = formatPlayer2("Advantage %s");
+            return formatPlayer2("Advantage %s");
         else if (minusResult >= 2)
-            score = formatPlayer1("Win for %s");
+            return formatPlayer1("Win for %s");
         else
-            score = formatPlayer2("Win for %s");
-        return score;
+            return formatPlayer2("Win for %s");
     }
 
     private String getEqualsScore() {
-        String score;
         switch (m_score1) {
         case 0:
-            score = "Love-All";
-            break;
+            return "Love-All";
         case 1:
-            score = "Fifteen-All";
-            break;
+            return "Fifteen-All";
         case 2:
-            score = "Thirty-All";
-            break;
+            return "Thirty-All";
         default:
-            score = "Deuce";
-            break;
-
+            return "Deuce";
         }
-        return score;
     }
 
     private String formatPlayer1(String fmt) {
