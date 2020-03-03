@@ -24,9 +24,6 @@ public class TennisGame2 implements TennisGame {
         if (P1point != P2point && Math.max(P1point, P2point) < 4) {
             return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
         }
-        if (P1point != P2point && P1point * P2point == 0 && Math.max(P1point, P2point) <= 3) {
-            return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
-        }
         String score = "";
         if (P1point == P2point && P1point < 4) {
             if (P1point != 3)
