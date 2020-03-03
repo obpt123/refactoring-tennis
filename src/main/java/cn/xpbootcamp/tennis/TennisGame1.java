@@ -54,12 +54,5 @@ public class TennisGame1 implements TennisGame {
     private String getEqualsScore() {
         return m_score1 > 2 ? "Deuce" : LOWER_NAMES[m_score1] + "-All";
     }
-
-    private String formatPlayer1(String fmt) {
-        return String.format(fmt, this.player1Name);
-    }
-
-    private String formatPlayer2(String fmt) {
-        return String.format(fmt, this.player2Name);
-    }
+    
 }
