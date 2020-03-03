@@ -6,8 +6,6 @@ public class TennisGame2 implements TennisGame {
     public int P1point = 0;
     public int P2point = 0;
 
-    public String P1res = "";
-    public String P2res = "";
     private String player1Name;
     private String player2Name;
 
@@ -26,7 +24,7 @@ public class TennisGame2 implements TennisGame {
         if (P1point != P2point && Math.max(P1point, P2point) < 4) {
             return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
         }
-        
+
         String score = "";
         if (P1point == P2point && P1point < 4) {
             if (P1point != 3)
@@ -36,14 +34,10 @@ public class TennisGame2 implements TennisGame {
             score = "Deuce";
 
         if (P1point > 0 && P1point <= 3 && P2point == 0) {
-            P1res = LOWER_NAMES[P1point];
-            P2res = LOWER_NAMES[0];
-            score = P1res + "-" + P2res;
+            score = LOWER_NAMES[P1point] + "-" + LOWER_NAMES[0];
         }
         if (P2point > 0 && P2point <= 3 && P1point == 0) {
-            P2res = LOWER_NAMES[P2point];
-            P1res = LOWER_NAMES[0];
-            score = P1res + "-" + P2res;
+            score = LOWER_NAMES[0] + "-" + LOWER_NAMES[P2point];
         }
         return score;
     }
