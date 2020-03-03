@@ -55,20 +55,14 @@ public class TennisGame2 implements TennisGame {
             score = P1res + "-" + P2res;
         }
 
-        if (P1point > P2point && P2point >= 3) {
-            score = formatPlayer1("Advantage %s");
+        if (P1point != P2point && Math.min(P1point,P2point) >= 3) {
+            score = P1point > P2point ? formatPlayer1("Advantage %s"): formatPlayer2("Advantage %s");
+        }
+        
+        if (Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2) {
+            score = P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
         }
 
-        if (P2point > P1point && P1point >= 3) {
-            score = formatPlayer2("Advantage %s");
-        }
-
-        if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
-            score = formatPlayer1("Win for %s");
-        }
-        if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
-            score = formatPlayer2("Win for %s");
-        }
         return score;
     }
 
