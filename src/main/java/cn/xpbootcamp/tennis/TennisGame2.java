@@ -17,6 +17,9 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
+        if (Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2) {
+            return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
+        }
         String score = "";
         if (P1point == P2point && P1point < 4) {
             if (P1point != 3)
@@ -57,10 +60,6 @@ public class TennisGame2 implements TennisGame {
 
         if (P1point != P2point && Math.min(P1point,P2point) >= 3) {
             score = P1point > P2point ? formatPlayer1("Advantage %s"): formatPlayer2("Advantage %s");
-        }
-        
-        if (Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2) {
-            score = P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
         }
 
         return score;
