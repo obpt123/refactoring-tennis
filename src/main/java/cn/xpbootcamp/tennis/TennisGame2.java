@@ -15,22 +15,42 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
-        if (Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2) {
+        if (isWin()) {
             return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
         }
-        if (P1point != P2point && Math.min(P1point, P2point) >= 3) {
+        if (isAdvantage()) {
             return P1point > P2point ? formatPlayer1("Advantage %s") : formatPlayer2("Advantage %s");
         }
-        if (P1point != P2point && Math.max(P1point, P2point) < 4) {
+        if (isLowerCompare()) {
             return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
         }
-        if (P1point == P2point && P1point >= 3) {
+        if (isDeuce()) {
             return "Deuce";
         }
-        if (P1point == P2point && P1point < 3) {
+        if (isLowerEquals()) {
             return LOWER_NAMES[P1point] + "-All";
         }
         throw new RuntimeException("Never occured");
+    }
+
+    private boolean isLowerEquals() {
+        return P1point == P2point && P1point < 3;
+    }
+
+    private boolean isDeuce() {
+        return P1point == P2point && P1point >= 3;
+    }
+
+    private boolean isLowerCompare() {
+        return P1point != P2point && Math.max(P1point, P2point) < 4;
+    }
+
+    private boolean isAdvantage() {
+        return P1point != P2point && Math.min(P1point, P2point) >= 3;
+    }
+
+    private boolean isWin() {
+        return Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2;
     }
 
     public void wonPoint(String player) {
