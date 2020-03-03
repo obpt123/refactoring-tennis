@@ -1,6 +1,7 @@
 package cn.xpbootcamp.tennis;
 
 public class TennisGame1 implements TennisGame {
+    private static final String[] LOWER_NAMES = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
 
     private int m_score1 = 0;
     private int m_score2 = 0;
@@ -30,7 +31,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getLowerScore() {
-        String score ="";
+        String score = "";
         int tempScore;
         for (int i = 1; i < 3; i++) {
             if (i == 1)
@@ -39,20 +40,7 @@ public class TennisGame1 implements TennisGame {
                 score += "-";
                 tempScore = m_score2;
             }
-            switch (tempScore) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-            }
+            score += LOWER_NAMES[tempScore];
         }
         return score;
     }
@@ -72,11 +60,9 @@ public class TennisGame1 implements TennisGame {
     private String getEqualsScore() {
         switch (m_score1) {
         case 0:
-            return "Love-All";
         case 1:
-            return "Fifteen-All";
         case 2:
-            return "Thirty-All";
+            return LOWER_NAMES[m_score1] + "-All";
         default:
             return "Deuce";
         }
