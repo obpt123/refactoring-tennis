@@ -3,8 +3,8 @@ package cn.xpbootcamp.tennis;
 public class TennisGame2 implements TennisGame {
     private static final String[] LOWER_NAMES = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
 
-    public int P1point = 0;
-    public int P2point = 0;
+    private int player1Point = 0;
+    private int player2Point = 0;
 
     private String player1Name;
     private String player2Name;
@@ -16,9 +16,9 @@ public class TennisGame2 implements TennisGame {
 
     public void wonPoint(String player) {
         if (player.equals(player1Name))
-            P1point++;
+            player1Point++;
         else
-            P2point++;
+            player2Point++;
     }
 
     public String getScore() {
@@ -45,41 +45,41 @@ public class TennisGame2 implements TennisGame {
     }
 
     private String buildLowerEqualsText() {
-        return LOWER_NAMES[P1point] + "-All";
+        return LOWER_NAMES[player1Point] + "-All";
     }
 
     private String buildLowerCompareText() {
-        return LOWER_NAMES[P1point] + "-" + LOWER_NAMES[P2point];
+        return LOWER_NAMES[player1Point] + "-" + LOWER_NAMES[player2Point];
     }
 
     private String buildAdvantageText() {
-        String playerName = P1point > P2point ? player1Name : player2Name;
+        String playerName = player1Point > player2Point ? player1Name : player2Name;
         return "Advantage " + playerName;
     }
 
     private String buildWinText() {
-        String playerName = P1point > P2point ? player1Name : player2Name;
+        String playerName = player1Point > player2Point ? player1Name : player2Name;
         return "Win for " + playerName;
     }
 
     private boolean isLowerEquals() {
-        return P1point == P2point && P1point < 3;
+        return player1Point == player2Point && player1Point < 3;
     }
 
     private boolean isDeuce() {
-        return P1point == P2point && P1point >= 3;
+        return player1Point == player2Point && player1Point >= 3;
     }
 
     private boolean isLowerCompare() {
-        return P1point != P2point && Math.max(P1point, P2point) < 4;
+        return player1Point != player2Point && Math.max(player1Point, player2Point) < 4;
     }
 
     private boolean isAdvantage() {
-        return P1point != P2point && Math.min(P1point, P2point) >= 3;
+        return player1Point != player2Point && Math.min(player1Point, player2Point) >= 3;
     }
 
     private boolean isWin() {
-        return Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2;
+        return Math.max(player1Point, player2Point) >= 4 && Math.abs(player1Point - player2Point) >= 2;
     }
 
 }
