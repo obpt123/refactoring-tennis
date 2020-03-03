@@ -14,6 +14,13 @@ public class TennisGame2 implements TennisGame {
         this.player2Name = player2Name;
     }
 
+    public void wonPoint(String player) {
+        if (player.equals(player1Name))
+            P1point++;
+        else
+            P2point++;
+    }
+
     public String getScore() {
         if (isWin()) {
             return buildWinText();
@@ -25,12 +32,16 @@ public class TennisGame2 implements TennisGame {
             return buildLowerCompareText();
         }
         if (isDeuce()) {
-            return "Deuce";
+            return buildDeuceText();
         }
         if (isLowerEquals()) {
             return buildLowerEqualsText();
         }
         throw new RuntimeException("Never occured");
+    }
+
+    private String buildDeuceText() {
+        return "Deuce";
     }
 
     private String buildLowerEqualsText() {
@@ -42,11 +53,13 @@ public class TennisGame2 implements TennisGame {
     }
 
     private String buildAdvantageText() {
-        return P1point > P2point ? formatPlayer1("Advantage %s") : formatPlayer2("Advantage %s");
+        String playerName = P1point > P2point ? player1Name : player2Name;
+        return "Advantage " + playerName;
     }
 
     private String buildWinText() {
-        return P1point > P2point ? formatPlayer1("Win for %s") : formatPlayer2("Win for %s");
+        String playerName = P1point > P2point ? player1Name : player2Name;
+        return "Win for " + playerName;
     }
 
     private boolean isLowerEquals() {
@@ -67,21 +80,6 @@ public class TennisGame2 implements TennisGame {
 
     private boolean isWin() {
         return Math.max(P1point, P2point) >= 4 && Math.abs(P1point - P2point) >= 2;
-    }
-
-    public void wonPoint(String player) {
-        if (player == this.player1Name)
-            P1point++;
-        else
-            P2point++;
-    }
-
-    private String formatPlayer1(String fmt) {
-        return String.format(fmt, player1Name);
-    }
-
-    private String formatPlayer2(String fmt) {
-        return String.format(fmt, player2Name);
     }
 
 }
