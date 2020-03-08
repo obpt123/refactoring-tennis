@@ -58,9 +58,8 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getHigherScore() {
-        int minusResult = m_score1 - m_score2;
         String displayName = m_score1 > m_score2 ? player1Name : player2Name;
-        if (Math.abs(minusResult) == 1) {
+        if (Math.abs(m_score1 - m_score2) == 1) {
             return String.format("Advantage %s", displayName);
         } else {
             return String.format("Win for %s", displayName);
