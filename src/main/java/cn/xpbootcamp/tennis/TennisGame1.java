@@ -2,6 +2,8 @@ package cn.xpbootcamp.tennis;
 
 public class TennisGame1 implements TennisGame {
 
+    private static final String[] LOWER_SCORE_NAMES = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
+
     private int m_score1 = 0;
     private int m_score2 = 0;
     private String player1Name;
@@ -31,8 +33,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getLowerScore() {
-        String[] lowerScoreNames = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
-        return String.format("%s-%s", lowerScoreNames[m_score1], lowerScoreNames[m_score2]);
+        return String.format("%s-%s", LOWER_SCORE_NAMES[m_score1], LOWER_SCORE_NAMES[m_score2]);
     }
 
     private String getHigherScore() {
@@ -48,8 +49,7 @@ public class TennisGame1 implements TennisGame {
         if (m_score1 >= 3) {
             return "Deuce";
         } else {
-            String[] lowerScoreNames = new String[] { "Love", "Fifteen", "Thirty" };
-            return String.format("%s-All", lowerScoreNames[m_score1]);
+            return String.format("%s-All", LOWER_SCORE_NAMES[m_score1]);
         }
     }
 }
