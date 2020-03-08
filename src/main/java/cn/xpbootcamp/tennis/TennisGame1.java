@@ -58,17 +58,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getHigherScore() {
-        String score;
         int minusResult = m_score1 - m_score2;
-        if (minusResult == 1)
-            score = "Advantage player1";
-        else if (minusResult == -1)
-            score = "Advantage player2";
-        else if (minusResult >= 2)
-            score = "Win for player1";
-        else
-            score = "Win for player2";
-        return score;
+        String displayName = m_score1 > m_score2 ? player1Name : player2Name;
+        if (Math.abs(minusResult) == 1) {
+            return String.format("Advantage %s", displayName);
+        } else {
+            return String.format("Win for %s", displayName);
+        }
     }
 
     private String getEqualScore() {
