@@ -26,11 +26,11 @@ public class TennisGame1 implements TennisGame {
         } else if (m_score1 >= 4 || m_score2 >= 4) {
             return getHigherScore();
         } else {
-            return getLowerScore("");
+            return getLowerScore();
         }
     }
 
-    private String getLowerScore(String score) {
+    private String getLowerScore() {
         String[] lowerScoreNames = new String[] { "Love", "Fifteen", "Thirty", "Forty" };
         return String.format("%s-%s", lowerScoreNames[m_score1], lowerScoreNames[m_score2]);
     }
