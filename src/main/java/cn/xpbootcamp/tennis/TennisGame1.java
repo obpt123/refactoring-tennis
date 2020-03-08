@@ -67,22 +67,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getEqualScore() {
-        String score;
-        switch (m_score1) {
-        case 0:
-            score = "Love-All";
-            break;
-        case 1:
-            score = "Fifteen-All";
-            break;
-        case 2:
-            score = "Thirty-All";
-            break;
-        default:
-            score = "Deuce";
-            break;
-
+        if (m_score1 >= 3) {
+            return "Deuce";
+        } else {
+            String[] lowerScoreNames = new String[] { "Love", "Fifteen", "Thirty" };
+            return String.format("%s-All", lowerScoreNames[m_score1]);
         }
-        return score;
     }
 }
